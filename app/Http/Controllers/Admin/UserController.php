@@ -29,4 +29,29 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+    public function get($id){
+
+        try{
+            $user = User::with('role')
+                ->find($id);
+
+            if(!$user)
+                return response()->json([
+                    'data' => '',
+                    'msg'  => 'not found'
+                ], 404);
+            else
+                return response()->json([
+                    'data' => $user,
+                    'msg'  => 'successfully'
+                ], 200);
+        }catch (\Exception $exception){
+            return response()->json([
+                'data' => $exception,
+                'msg'  => 'failed'
+            ], 500);
+        }
+    }
+
 }

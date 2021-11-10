@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,12 +24,13 @@ Route::get('/test', function () {
 });
 
 Route::get('/get',[TestController::class, 'get']);
+Route::get('/get-user/{id}',[UserController::class, 'get']);
 
 
 
 /*
 get
 post
-put/patch 
+put/patch
 delete
 */
